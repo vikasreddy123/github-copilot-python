@@ -5,6 +5,7 @@ let timerInterval = null;
 let elapsedSeconds = 0;
 let gameCompleted = false;
 let currentDifficulty = 'medium';
+let hintsUsed = 0;
 const THEME_KEY = 'sudoku_theme';
 
 function setThemeButtonState(theme) {
@@ -59,6 +60,7 @@ function startTimer() {
   stopTimer();
   elapsedSeconds = 0;
   gameCompleted = false;
+  hintsUsed = 0;
   updateTimerDisplay();
   timerInterval = setInterval(() => {
     elapsedSeconds += 1;
@@ -106,7 +108,6 @@ function renderLeaderboard() {
   }
   const tbody = table.querySelector('tbody');
   tbody.innerHTML = '';
-
   leaderboard.forEach((entry, index) => {
     const row = document.createElement('tr');
     row.innerHTML = `
@@ -114,6 +115,7 @@ function renderLeaderboard() {
       <td>${entry.name}</td>
       <td>${formatTime(entry.time)}</td>
       <td>${entry.difficulty}</td>
+      <td>${entry.hints ?? 0}</td>
     `;
     tbody.appendChild(row);
   });
@@ -124,6 +126,7 @@ function saveLeaderboard(timeSeconds) {
     name: askPlayerName(),
     time: timeSeconds,
     difficulty: currentDifficulty,
+    hints: hintsUsed,
     when: new Date().toISOString()
   });
 }
@@ -147,12 +150,10 @@ async function checkForCompletion() {
   if (gameCompleted) {
     return;
   }
-
   const board = getCurrentBoard();
   if (!isPuzzleComplete(board)) {
     return;
   }
-
   const boardDiv = document.getElementById('sudoku-board');
   const inputs = boardDiv.getElementsByTagName('input');
   for (let idx = 0; idx < inputs.length; idx++) {
@@ -160,7 +161,6 @@ async function checkForCompletion() {
       return;
     }
   }
-
   const res = await fetch('/check', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -201,7 +201,6 @@ function getCurrentBoard() {
   const boardDiv = document.getElementById('sudoku-board');
   const inputs = boardDiv.getElementsByTagName('input');
   const board = [];
-
   for (let i = 0; i < SIZE; i++) {
     board[i] = [];
     for (let j = 0; j < SIZE; j++) {
@@ -210,7 +209,6 @@ function getCurrentBoard() {
       board[i][j] = val ? parseInt(val, 10) : 0;
     }
   }
-
   return board;
 }
 
@@ -218,19 +216,16 @@ function isValueValidForCell(board, row, col, value) {
   if (value === 0) {
     return true;
   }
-
   for (let j = 0; j < SIZE; j++) {
     if (j !== col && board[row][j] === value) {
       return false;
     }
   }
-
   for (let i = 0; i < SIZE; i++) {
     if (i !== row && board[i][col] === value) {
       return false;
     }
   }
-
   const startRow = Math.floor(row / 3) * 3;
   const startCol = Math.floor(col / 3) * 3;
   for (let i = startRow; i < startRow + 3; i++) {
@@ -240,7 +235,6 @@ function isValueValidForCell(board, row, col, value) {
       }
     }
   }
-
   return true;
 }
 
@@ -249,7 +243,6 @@ function validateInputCell(input) {
   const col = parseInt(input.dataset.col, 10);
   const board = getCurrentBoard();
   const value = board[row][col];
-
   if (isValueValidForCell(board, row, col, value)) {
     input.classList.remove('invalid');
   } else {
@@ -324,11 +317,20 @@ async function checkSolution() {
       inp.className = 'sudoku-cell incorrect';
     }
   }
+  // FIX: previously an empty `incorrect` list was treated as a solved
+  // puzzle, even if the board still had empty cells (since /check only
+  // reports mismatches for non-empty cells). Now we also require the
+  // board to be fully filled before declaring completion.
   if (incorrect.size === 0) {
-    await completeGame();
+    if (isPuzzleComplete(board)) {
+      await completeGame();
+      return;
+    }
+    msg.style.color = '#1976d2';
+    msg.innerText = 'Looking good so far \u2014 no mistakes yet, but the puzzle isn\'t complete.';
+    updateHintButtonState();
     return;
   }
-
   msg.style.color = '#d32f2f';
   msg.innerText = 'Some cells are incorrect.';
   updateHintButtonState();
@@ -343,14 +345,12 @@ async function hintCell() {
   });
   const data = await res.json();
   const msg = document.getElementById('message');
-
   if (!res.ok || data.error) {
     msg.style.color = '#d32f2f';
     msg.innerText = data.error || 'Unable to get a hint.';
     updateHintButtonState();
     return;
   }
-
   const boardDiv = document.getElementById('sudoku-board');
   const inputs = boardDiv.getElementsByTagName('input');
   const idx = data.row * SIZE + data.col;
@@ -358,7 +358,7 @@ async function hintCell() {
   input.value = data.value;
   input.disabled = true;
   input.className = 'sudoku-cell hinted';
-
+  hintsUsed += 1;
   msg.style.color = '#1976d2';
   msg.innerText = 'Hint applied to one empty cell.';
   updateHintButtonState();
@@ -375,7 +375,6 @@ window.addEventListener('load', () => {
   document.getElementById('new-game').addEventListener('click', newGame);
   document.getElementById('hint-cell').addEventListener('click', hintCell);
   document.getElementById('check-solution').addEventListener('click', checkSolution);
-  renderLeaderboard();
-  // initialize
+  renderLeaderboard(); // initialize
   newGame();
 });
