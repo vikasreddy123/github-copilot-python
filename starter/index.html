@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sudoku Game</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="heading-group">
+        <p class="eyebrow">Sudoku Challenge</p>
+        <h1>Sudoku Game</h1>
+      </div>
+      <div id="timer" class="timer">Time: 00:00</div>
+    </header>
+
+    <main class="page-content">
+      <section class="game-panel">
+        <div class="panel-header">
+          <h2>Play</h2>
+          <p class="panel-copy">Responsive layout, helpful controls, and a clean board for every screen size.</p>
+        </div>
+
+        <div class="controls">
+          <label for="difficulty-select">Difficulty</label>
+          <select id="difficulty-select">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          <button id="theme-toggle" aria-pressed="false">Dark Mode</button>
+          <button id="new-game">New Game</button>
+          <button id="hint-cell">Hint</button>
+          <button id="check-solution">Check Solution</button>
+          <span id="message" class="message"></span>
+        </div>
+
+        <div class="board-shell">
+          <div id="sudoku-board"></div>
+        </div>
+      </section>
+
+      <aside id="leaderboard-container" class="leaderboard-panel">
+        <div class="panel-header">
+          <h2>Top 10 Leaderboard</h2>
+          <p class="panel-copy">Fastest finishes are saved locally so you can chase your best times.</p>
+        </div>
+
+        <table id="leaderboard">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Time</th>
+              <th>Difficulty</th>
+              <th>Hints</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </aside>
+    </main>
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
