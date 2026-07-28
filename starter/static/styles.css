@@ -1,273 +1,285 @@
 :root {
-  color-scheme: light;
-  --bg: #f4f4f4;
-  --text: #1f2937;
-  --surface: #ffffff;
-  --surface-soft: #f9fafb;
-  --panel-border: #d1d5db;
-  --panel-bg: rgba(255, 255, 255, 0.88);
-  --panel-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
-  --cell-bg: #ffffff;
-  --cell-border: #d1d5db;
-  --focus-bg: #e0f2fe;
-  --prefilled-bg: #f1f5f9;
-  --invalid-bg: #ffebee;
-  --invalid-border: #ef4444;
-  --button-bg: #2563eb;
-  --button-hover: #1d4ed8;
-  --button-text: #ffffff;
-  --select-bg: #ffffff;
-  --select-border: #cbd5e1;
-  --message-error: #b91c1c;
-  --message-success: #15803d;
-  --table-header: #f8fafc;
-  --row-alt: #f1f5f9;
-  --block-bg: #eef6ff;
-  --card-bg: #ffffff;
-  --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    color-scheme: light;
+    --bg: #f4f4f4;
+    --text: #1f2937;
+    --surface: #ffffff;
+    --surface-soft: #f9fafb;
+    --panel-border: #d1d5db;
+    --panel-bg: rgba(255, 255, 255, 0.88);
+    --panel-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+    --cell-bg: #ffffff;
+    --cell-border: #d1d5db;
+    --focus-bg: #e0f2fe;
+    --prefilled-bg: #f1f5f9;
+    --invalid-bg: #ffebee;
+    --invalid-border: #ef4444;
+    --button-bg: #2563eb;
+    --button-hover: #1d4ed8;
+    --button-text: #ffffff;
+    --select-bg: #ffffff;
+    --select-border: #cbd5e1;
+    --message-error: #b91c1c;
+    --message-success: #15803d;
+    --table-header: #f8fafc;
+    --row-alt: #f1f5f9;
+    --block-bg: #eef6ff;
+    --card-bg: #ffffff;
+    --shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
 }
 
 :root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0c111b;
-  --text: #e2e8f0;
-  --surface: #111827;
-  --surface-soft: #1f2937;
-  --panel-border: #334155;
-  --panel-bg: rgba(15, 23, 42, 0.92);
-  --panel-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
-  --cell-bg: #111827;
-  --cell-border: #334155;
-  --focus-bg: #1e293b;
-  --prefilled-bg: #17213a;
-  --invalid-bg: #7f1d1d;
-  --invalid-border: #f87171;
-  --button-bg: #2563eb;
-  --button-hover: #1d4ed8;
-  --button-text: #ffffff;
-  --select-bg: #1f2937;
-  --select-border: #475569;
-  --message-error: #f87171;
-  --message-success: #22c55e;
-  --table-header: #111827;
-  --row-alt: #0f172a;
-  --block-bg: rgba(148, 163, 184, 0.14);
-  --card-bg: #111827;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+    --bg: #0c111b;
+    --text: #e2e8f0;
+    --surface: #111827;
+    --surface-soft: #1f2937;
+    --panel-border: #334155;
+    --panel-bg: rgba(15, 23, 42, 0.92);
+    --panel-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+    --cell-bg: #111827;
+    --cell-border: #334155;
+    --focus-bg: #1e293b;
+    --prefilled-bg: #17213a;
+    --invalid-bg: #7f1d1d;
+    --invalid-border: #f87171;
+    --button-bg: #2563eb;
+    --button-hover: #1d4ed8;
+    --button-text: #ffffff;
+    --select-bg: #1f2937;
+    --select-border: #475569;
+    --message-error: #f87171;
+    --message-success: #22c55e;
+    --table-header: #111827;
+    --row-alt: #0f172a;
+    --block-bg: rgba(148, 163, 184, 0.14);
+    --card-bg: #111827;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  scroll-behavior: smooth;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32%), var(--bg);
-  color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32%), var(--bg);
+    color: var(--text);
 }
 
 .page-shell {
-  width: min(1200px, 100%);
-  margin: 0 auto;
-  padding: 32px 20px 40px;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 32px 20px 40px;
 }
 
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 24px;
 }
 
 .heading-group {
-  text-align: left;
+    text-align: left;
 }
 
 .eyebrow {
-  margin: 0 0 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
-  font-size: 0.78rem;
-  color: #475569;
+    margin: 0 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.78rem;
+    color: #475569;
 }
 
 :root[data-theme="dark"] .eyebrow {
-  color: #94a3b8;
+    color: #94a3b8;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2rem, 2.8vw, 3.4rem);
-  line-height: 1.04;
+    margin: 0;
+    font-size: clamp(2rem, 2.8vw, 3.4rem);
+    line-height: 1.04;
 }
 
 .timer {
-  font-size: 1.05rem;
-  font-weight: 600;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--panel-border);
-  color: var(--text);
-  backdrop-filter: blur(10px);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
 }
 
 :root[data-theme="dark"] .timer {
-  background: rgba(15, 23, 42, 0.94);
+    background: rgba(15, 23, 42, 0.94);
 }
 
 .page-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
-  gap: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+    gap: 24px;
 }
 
-.game-panel, .leaderboard-panel {
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  border-radius: 26px;
-  box-shadow: var(--shadow);
-  padding: 24px;
-  backdrop-filter: blur(18px);
+.game-panel,
+.leaderboard-panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    backdrop-filter: blur(18px);
 }
 
 .panel-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .panel-header h2 {
-  margin: 0;
-  font-size: 1.35rem;
+    margin: 0;
+    font-size: 1.35rem;
 }
 
 .panel-copy {
-  margin: 0;
-  color: #475569;
-  line-height: 1.6;
-  max-width: 48rem;
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+    max-width: 48rem;
 }
 
 :root[data-theme="dark"] .panel-copy {
-  color: #cbd5e1;
+    color: #cbd5e1;
 }
 
 .controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 22px;
 }
 
-.controls label, .controls select, .controls button {
-  min-height: 48px;
+.controls label,
+.controls select,
+.controls button {
+    min-height: 48px;
 }
 
 .controls label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
 }
 
-select, button {
-  width: 100%;
-  border-radius: 14px;
-  border: 1px solid transparent;
-  font: inherit;
+select,
+button {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    font: inherit;
 }
 
 select {
-  background: var(--select-bg);
-  color: var(--text);
-  border-color: var(--select-border);
-  padding: 0 16px;
+    background: var(--select-bg);
+    color: var(--text);
+    border-color: var(--select-border);
+    padding: 0 16px;
 }
 
 button {
-  padding: 0 18px;
-  background: var(--button-bg);
-  color: var(--button-text);
-  border-color: transparent;
-  font-weight: 600;
-  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+    padding: 0 18px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-color: transparent;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  background: var(--button-hover);
-  transform: translateY(-1px);
+    background: var(--button-hover);
+    transform: translateY(-1px);
 }
 
 .message {
-  display: block;
-  min-height: 1.5rem;
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  color: var(--message-error);
+    display: block;
+    min-height: 1.5rem;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: var(--message-error);
 }
 
-/* FIX: .board-shell now wraps #sudoku-board (for centering) instead of being applied directly to it. */
+/* FIX: .board-shell now wraps #sudoku-board (for centering) instead of
+   being applied directly to it. Previously this class set display:flex
+   directly on #sudoku-board, which turned its .sudoku-row children into
+   flex items laid out side-by-side instead of stacking top to bottom. */
 .board-shell {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #sudoku-board {
-  width: min(100%, 520px);
-  padding: 16px;
-  border-radius: 24px;
-  border: 2px solid var(--panel-border);
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 14px 38px rgba(15, 23, 42, 0.08);
+    width: min(100%, 520px);
+    padding: 16px;
+    border-radius: 24px;
+    border: 2px solid var(--panel-border);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 14px 38px rgba(15, 23, 42, 0.08);
 }
 
 .sudoku-row {
-  display: flex;
+    display: flex;
 }
 
 .sudoku-cell {
-  width: clamp(42px, 4.8vw, 56px);
-  height: clamp(42px, 4.8vw, 56px);
-  border: 1px solid var(--cell-border);
-  text-align: center;
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  border-radius: 10px;
-  margin: 0 2px 2px 0;
-  outline: none;
-  background: var(--cell-bg);
-  color: var(--text);
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    width: clamp(42px, 4.8vw, 56px);
+    height: clamp(42px, 4.8vw, 56px);
+    border: 1px solid var(--cell-border);
+    text-align: center;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    border-radius: 10px;
+    margin: 0 2px 2px 0;
+    outline: none;
+    background: var(--cell-bg);
+    color: var(--text);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
 }
 
 .sudoku-cell:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .sudoku-cell:focus {
-  background: var(--focus-bg);
-  transform: translateY(-1px);
+    background: var(--focus-bg);
+    transform: translateY(-1px);
 }
 
 .sudoku-cell.prefilled {
-  background: var(--prefilled-bg);
-  font-weight: 700;
+    background: var(--prefilled-bg);
+    font-weight: 700;
 }
 
-.sudoku-cell.invalid, .sudoku-cell.incorrect {
-  border-color: var(--invalid-border);
-  background: var(--invalid-bg);
+.sudoku-cell.invalid,
+.sudoku-cell.incorrect {
+    border-color: var(--invalid-border);
+    background: var(--invalid-bg);
 }
 
-/* FIX: middle-row selectors now use :nth-child(n+4):nth-child(-n+6) to correctly limit shading to columns 4-6 only */
+/* FIX: middle-row selectors now use :nth-child(n+4):nth-child(-n+6) to
+   correctly limit shading to columns 4-6 only (the middle-center block).
+   Previously :nth-child(n+4) alone selected columns 4 through 9, which
+   incorrectly shaded the middle-right block (cols 7-9) as well, making
+   two neighboring 3x3 blocks share the same color. */
 .sudoku-row:nth-child(1) .sudoku-cell:nth-child(-n+3),
 .sudoku-row:nth-child(2) .sudoku-cell:nth-child(-n+3),
 .sudoku-row:nth-child(3) .sudoku-cell:nth-child(-n+3),
@@ -283,92 +295,99 @@ button:hover {
 .sudoku-row:nth-child(7) .sudoku-cell:nth-child(n+7),
 .sudoku-row:nth-child(8) .sudoku-cell:nth-child(n+7),
 .sudoku-row:nth-child(9) .sudoku-cell:nth-child(n+7) {
-  background: var(--block-bg);
+    background: var(--block-bg);
 }
 
 .sudoku-cell:nth-child(3),
 .sudoku-cell:nth-child(6) {
-  border-right: 3px solid var(--panel-border);
+    border-right: 3px solid var(--panel-border);
 }
 
 .sudoku-row:nth-child(3) .sudoku-cell,
 .sudoku-row:nth-child(6) .sudoku-cell {
-  border-bottom: 3px solid var(--panel-border);
+    border-bottom: 3px solid var(--panel-border);
 }
 
 #leaderboard-container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  background: transparent;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
 }
 
 .leaderboard-panel {
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 #leaderboard {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 100%;
-  background: var(--surface);
-  border-radius: 18px;
-  overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 100%;
+    background: var(--surface);
+    border-radius: 18px;
+    overflow: hidden;
 }
 
-#leaderboard th, #leaderboard td {
-  border: 1px solid var(--cell-border);
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 0.95rem;
+#leaderboard th,
+#leaderboard td {
+    border: 1px solid var(--cell-border);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.95rem;
 }
 
 #leaderboard th {
-  background: var(--table-header);
-  font-weight: 700;
+    background: var(--table-header);
+    font-weight: 700;
 }
 
 #leaderboard tbody tr:nth-child(odd) {
-  background: var(--row-alt);
+    background: var(--row-alt);
 }
 
 #leaderboard tbody tr:hover {
-  background: rgba(37, 99, 235, 0.08);
+    background: rgba(37, 99, 235, 0.08);
 }
 
 @media (max-width: 900px) {
-  .page-content {
-    grid-template-columns: 1fr;
-  }
-  .page-header {
-    align-items: flex-start;
-  }
-  .timer {
-    width: 100%;
-    text-align: center;
-  }
+    .page-content {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        align-items: flex-start;
+    }
+
+    .timer {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media (max-width: 640px) {
-  .page-shell {
-    padding: 22px 16px 28px;
-  }
-  .controls {
-    grid-template-columns: 1fr;
-  }
-  .controls label {
-    min-height: auto;
-  }
-  .sudoku-cell {
-    width: clamp(38px, 10vw, 52px);
-    height: clamp(38px, 10vw, 52px);
-  }
-  .panel-copy {
-    display: none;
-  }
+    .page-shell {
+        padding: 22px 16px 28px;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .controls label {
+        min-height: auto;
+    }
+
+    .sudoku-cell {
+        width: clamp(38px, 10vw, 52px);
+        height: clamp(38px, 10vw, 52px);
+    }
+
+    .panel-copy {
+        display: none;
+    }
 }
