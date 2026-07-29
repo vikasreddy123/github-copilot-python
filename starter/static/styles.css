@@ -275,6 +275,27 @@ button:hover {
     background: var(--invalid-bg);
 }
 
+.sudoku-cell.shake {
+    animation: sudoku-cell-shake 0.45s ease-in-out 2;
+    border-color: var(--invalid-border);
+    background: var(--invalid-bg);
+}
+
+@keyframes sudoku-cell-shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    75% {
+        transform: translateX(-3px);
+    }
+}
+
 /* FIX: middle-row selectors now use :nth-child(n+4):nth-child(-n+6) to
    correctly limit shading to columns 4-6 only (the middle-center block).
    Previously :nth-child(n+4) alone selected columns 4 through 9, which

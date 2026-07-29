@@ -265,6 +265,21 @@ function isPuzzleComplete(board) {
   return board.every(row => row.every(cell => cell !== 0));
 }
 
+function triggerCellShake(input) {
+  input.classList.remove('shake');
+  void input.offsetWidth;
+  input.classList.add('shake');
+  window.setTimeout(() => input.classList.remove('shake'), 600);
+}
+
+function animateIncorrectCells(inputs) {
+  Array.from(inputs).forEach((input) => {
+    if (!input.disabled && input.classList.contains('incorrect')) {
+      triggerCellShake(input);
+    }
+  });
+}
+
 function updateHintButtonState() {
   const hintButton = document.getElementById('hint-cell');
   const board = getCurrentBoard();
@@ -340,6 +355,8 @@ async function checkSolution() {
     await completeGame();
     return;
   }
+
+  animateIncorrectCells(inputs);
 
   msg.style.color = '#d32f2f';
   if (incorrect.size > 0 && missingCount > 0) {
